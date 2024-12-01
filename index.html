@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advent of Code 2024</title>
+    <script type="text/javascript" src="days/day-1.js"></script>
+    <link href="styles.css" rel="stylesheet"/>
+    <script>
+        const submitButton = document.getElementById('submit');
+
+        const executeChallenge = () => {
+            const daySelected = document.getElementById('day-select').value;
+            const inputValue = document.getElementById('input-field').value;
+            const outputField = document.getElementById('output-field');
+            let outputValue = 'Please Select A Day Above';
+            
+            switch(daySelected) {
+                case 'day-1':
+                    outputValue = executeDay1Challenge(inputValue);
+                    break;
+                default:
+                    break;
+            }
+
+            if (isNaN(outputValue)) {
+                outputValue = "Invalid Input"
+            }
+
+            outputField.value = outputValue;
+        }   
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div id="top-bar">
+            <div id="day-select-wrapper">
+                <strong>Select Day: </strong>
+                <select id="day-select">
+                    <option value="day-1">Day 1</option>
+                </select>
+            </div>
+            <div>
+                <h1>Advent of Code</h1>
+            </div>
+        </div>
+        <div id="input-wrapper">
+            <strong>Add Input:</strong>
+            <textarea id="input-field"></textarea>
+            <button id="submit" onClick="executeChallenge()">GO</button>
+        </div>
+    </div>
+   
+    <div class="wrapper">
+        <strong>Observe Output:</strong>
+        <textarea id="output-field" readonly></textarea>
+    </div>
+    
+</body>
+</html>
