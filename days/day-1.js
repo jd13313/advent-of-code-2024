@@ -1,47 +1,36 @@
-const getLists = (inputString) => {
-    const column1 = [];
-    const column2 = [];
+const getSplitLists = (inputString) => {
+    const listLeft = [];
+    const listRight = [];
 
     inputString
         .split('\n')
         .forEach((stringColumns) => {
             const columns = stringColumns.split('   ');
-            column1.push(columns[0]);
-            column2.push(columns[1]);
+            listLeft.push(columns[0]);
+            listRight.push(columns[1]);
         } 
     );
 
     const lists = {
-        column1: column1.sort(),
-        column2: column2.sort()
+        left: listLeft.sort(),
+        right: listRight.sort()
     };
 
-    return lists.column1.map((number, index) => [number, lists.column2[index]]);
+    return lists.left.map((number, index) => [number, lists.right[index]]);
 }
-
-const getDistanceBetween = (a, b) => {
-    let distance = 0;
-
-    if (a > b) {
-        distance = Math.abs(a - b);
-    } else {
-        distance = Math.abs(b - a);
-    }
-
-    return distance;
-}
-
-
-
 
 const executeDay1Challenge = (input) => {
-    const distances = getLists(input).map((list) => {
-        return getDistanceBetween(list[0], list[1]);
+    const distances = getSplitLists(input.trim()).map((list) => {
+        const a = list[0];
+        const b = list[1];
+
+        if (a > b) return Math.abs(a - b);
+        
+        return Math.abs(b - a);
     })
 
-
     return distances.reduce((accumulator, number) => {
-        return  accumulator + number;
+        return accumulator + number;
     }, 0);
 }
 
