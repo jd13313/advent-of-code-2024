@@ -43,7 +43,7 @@ const executePartOne = (input: string) => {
 }
 
 const executePartTwo = (input: string) => {
-    const lists = getSplitLists(input.trim());
+    const lists = getSplitLists(input);
 
     const answer = lists.left.reduce((accumulator, currentNumber) => {
         const number = Number(currentNumber);
