@@ -59,5 +59,5 @@ export const executeDay1Challenge = (input: string,  part: number) => {
     if (part == 1) return executePartOne(input);
     if (part == 2) return executePartTwo(input);
 
-    return 'Challenge Not Found';
+    return 'Part Not Found';
 }

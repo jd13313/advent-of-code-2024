@@ -1,3 +1,6 @@
+import { getReportsFormatted } from "./shared";
+
+
 const levelHasTrend = (levels: number[], direction: 'increase' | 'decrease') => {
     return levels.every((level: number, index: number) => {
         const previousNumber = levels[index - 1];
@@ -12,27 +15,12 @@ const levelHasTrend = (levels: number[], direction: 'increase' | 'decrease') => 
     });
 }
 
-const executePartOne = (input: string) => {
-    const reports = input
-        .trim()
-        .split('\n')
-        .map((report) => report.split(' ').map((level) => Number(level)));
+export const executePartOne = (input: string) => {
+    const reports = getReportsFormatted(input);
 
-    const safeReports = reports.filter((levels) => {
+    const safeReports = reports.filter((levels: number[]) => {
         return levelHasTrend(levels, 'increase') || levelHasTrend(levels, 'decrease');
     })
 
-    return safeReports.length;
-}
-
-
-
-const executePartTwo = (input: string) => {
-
-}
-
-
-export const executeDay2Challenge = (input: string, part: number) => {
-    if (part === 1) return executePartOne(input);
-    if (part === 2) return executePartTwo(input);
+    return String(safeReports.length);
 }

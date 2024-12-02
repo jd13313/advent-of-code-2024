@@ -1,5 +1,5 @@
 import { executeDay1Challenge } from "./days/day1.ts";
-import { executeDay2Challenge } from "./days/day2.ts";
+import { executeDay2Challenge } from "./days/day-2/shared.ts";
 
 export const executeChallenge = () => {
     const challengeSelected = (<HTMLInputElement>document.getElementById('challenge-select'))?.value ?? '1-1';
