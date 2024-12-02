@@ -30,9 +30,7 @@ const executePartOne = (input: string) => {
         .map((number, index) => {
             const a = Number(number);
             const b = Number(lists.right[index]);
-
-            if (a > b) return Math.abs(a - b);
-            
+        
             return Math.abs(b - a);
         }
     )

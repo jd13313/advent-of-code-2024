@@ -1,7 +1,7 @@
 import { executeDay1Challenge } from "./days/day1.ts";
 
 export const executeChallenge = () => {
-    const challengeSelected = (<HTMLInputElement>document.getElementById('day-select'))?.value ?? 1;
+    const challengeSelected = (<HTMLInputElement>document.getElementById('challenge-select'))?.value ?? '1-1';
     const inputValue = (<HTMLInputElement>document.getElementById('input-field'))?.value;
     const outputField = <HTMLInputElement>document.getElementById('output-field');
 
