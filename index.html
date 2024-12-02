@@ -11,13 +11,14 @@
 
         const executeChallenge = () => {
             const daySelected = document.getElementById('day-select').value;
+            const partSelected = document.getElementById('part-select').value;
             const inputValue = document.getElementById('input-field').value;
             const outputField = document.getElementById('output-field');
             let outputValue = 'Please Select A Day Above';
             
             switch(daySelected) {
                 case 'day-1':
-                    outputValue = executeDay1Challenge(inputValue);
+                    outputValue = executeDay1Challenge(inputValue, partSelected);
                     break;
                 default:
                     break;
@@ -34,6 +35,13 @@
                 <strong>Select Day: </strong>
                 <select id="day-select">
                     <option value="day-1">Day 1</option>
+                </select>
+            </div>
+            <div id="part-select-wrapper">
+                <strong>Select Part: </strong>
+                <select id="part-select">
+                    <option value="1">Part 1</option>
+                    <option value="2">Part 2</option>
                 </select>
             </div>
             <div>

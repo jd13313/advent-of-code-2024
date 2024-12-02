@@ -3,6 +3,7 @@ const getSplitLists = (inputString) => {
     const listRight = [];
 
     inputString
+        .trim()
         .split('\n')
         .forEach((stringColumns) => {
             const columns = stringColumns.split('   ');
@@ -11,26 +12,41 @@ const getSplitLists = (inputString) => {
         } 
     );
 
-    const lists = {
+    return {
         left: listLeft.sort(),
         right: listRight.sort()
     };
-
-    return lists.left.map((number, index) => [number, lists.right[index]]);
 }
 
-const executeDay1Challenge = (input) => {
-    const distances = getSplitLists(input.trim()).map((list) => {
-        const a = list[0];
-        const b = list[1];
+const executePartOne = (input) => {
+    const lists = getSplitLists(input);
+    const distances = lists.left
+        .map((number, index) => {
+            const a = number;
+            const b = lists.right[index];
 
-        if (a > b) return Math.abs(a - b);
-        
-        return Math.abs(b - a);
-    })
+            if (a > b) return Math.abs(a - b);
+            
+            return Math.abs(b - a);
+        }
+    )
 
     return distances.reduce((accumulator, number) => {
         return accumulator + number;
     }, 0);
 }
 
+const executePartTwo = (input) => {
+    const lists = getSplitLists(input.trim());
+
+    return lists.left.reduce((accumulator, number) => {
+        const rightListCount = lists.right.filter((rightNumber) => rightNumber == number).length;
+
+        return accumulator + (number * rightListCount);
+    }, 0);
+}
+
+const executeDay1Challenge = (input,  part) => {
+    if (part == 1) return executePartOne(input);
+    if (part == 2) return executePartTwo(input);
+}
