@@ -1,6 +1,11 @@
-const getSplitLists = (inputString) => {
-    const listLeft = [];
-    const listRight = [];
+type SplitList = {
+    left: number[],
+    right: number[]
+}
+
+const getSplitLists = (inputString: string): SplitList  => {
+    const listLeft: number[] = [];
+    const listRight: number[] = [];
 
     inputString
         .trim()
@@ -8,8 +13,8 @@ const getSplitLists = (inputString) => {
         .forEach((stringColumns) => {
             const columns = stringColumns.split('   ');
 
-            listLeft.push(columns[0]);
-            listRight.push(columns[1]);
+            listLeft.push(Number(columns[0]));
+            listRight.push(Number(columns[1]));
         } 
     );
 
@@ -19,12 +24,12 @@ const getSplitLists = (inputString) => {
     };
 }
 
-const executePartOne = (input) => {
+const executePartOne = (input: string) => {
     const lists = getSplitLists(input);
     const distances = lists.left
         .map((number, index) => {
-            const a = number;
-            const b = lists.right[index];
+            const a = Number(number);
+            const b = Number(lists.right[index]);
 
             if (a > b) return Math.abs(a - b);
             
@@ -32,22 +37,29 @@ const executePartOne = (input) => {
         }
     )
 
-    return distances.reduce((accumulator, number) => {
+    const answer = distances.reduce((accumulator, number) => {
         return accumulator + number;
     }, 0);
+
+    return String(answer);
 }
 
-const executePartTwo = (input) => {
+const executePartTwo = (input: string) => {
     const lists = getSplitLists(input.trim());
 
-    return lists.left.reduce((accumulator, number) => {
+    const answer = lists.left.reduce((accumulator, currentNumber) => {
+        const number = Number(currentNumber);
         const rightListCount = lists.right.filter((rightNumber) => rightNumber == number).length;
 
         return accumulator + (number * rightListCount);
     }, 0);
+
+    return String(answer);
 }
 
-const executeDay1Challenge = (input,  part) => {
+export const executeDay1Challenge = (input: string,  part: number) => {
     if (part == 1) return executePartOne(input);
     if (part == 2) return executePartTwo(input);
+
+    return 'Challenge Not Found';
 }

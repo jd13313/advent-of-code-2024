@@ -1,5 +1,5 @@
 # Demo
-https://duenas.dev/aoc/
+https://projects.duenas.dev/aoc/
 
 
 # Example Inputs
