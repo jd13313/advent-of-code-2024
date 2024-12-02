@@ -7,6 +7,7 @@ const getSplitLists = (inputString) => {
         .split('\n')
         .forEach((stringColumns) => {
             const columns = stringColumns.split('   ');
+
             listLeft.push(columns[0]);
             listRight.push(columns[1]);
         } 

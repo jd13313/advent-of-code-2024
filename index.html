@@ -10,15 +10,17 @@
         const submitButton = document.getElementById('submit');
 
         const executeChallenge = () => {
-            const daySelected = document.getElementById('day-select').value;
-            const partSelected = document.getElementById('part-select').value;
+            const challengeSelected = document.getElementById('day-select').value;
             const inputValue = document.getElementById('input-field').value;
             const outputField = document.getElementById('output-field');
             let outputValue = 'Please Select A Day Above';
+
+            const challenge = challengeSelected.split('-');
+            console.log(challenge);
             
-            switch(daySelected) {
-                case 'day-1':
-                    outputValue = executeDay1Challenge(inputValue, partSelected);
+            switch(challenge[0]) {
+                case '1':
+                    outputValue = executeDay1Challenge(inputValue, challenge[1]);
                     break;
                 default:
                     break;
@@ -31,21 +33,16 @@
 <body>
     <div class="wrapper">
         <div id="top-bar">
-            <div id="day-select-wrapper">
-                <strong>Select Day: </strong>
-                <select id="day-select">
-                    <option value="day-1">Day 1</option>
-                </select>
-            </div>
-            <div id="part-select-wrapper">
-                <strong>Select Part: </strong>
-                <select id="part-select">
-                    <option value="1">Part 1</option>
-                    <option value="2">Part 2</option>
-                </select>
-            </div>
             <div>
                 <h1>Advent of Code</h1>
+                <a href="https://github.com/jd13313/advent-of-code-2024" target="_blank">Source</a>
+            </div>
+            <div class="dropdown-wrapper">
+                <strong>Select Challenge: </strong>
+                <select id="day-select">
+                    <option value="1-1">Day 1, Part 1</option>
+                    <option value="1-2">Day 1, Part 2</option>
+                </select>
             </div>
         </div>
         <div id="input-wrapper">
@@ -59,6 +56,5 @@
         <strong>Observe Output:</strong>
         <textarea id="output-field" readonly></textarea>
     </div>
-    
 </body>
 </html>
