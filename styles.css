@@ -6,17 +6,22 @@ html {
     box-sizing: inherit;
 }
 
-h1 {
+h1, h2 {
     margin: 0;
 }
 
+h2 {
+    font-size: 1.1em;
+}
+
 body {
-    background-color: #333;
+    background-color: #06485F;
+    font-family: sans-serif;
 }
 
 .wrapper {
     width: 60%;
-    background-color: #fff;
+    background-color: #EFE3C7;
     border-radius: 15px;
     margin: 20px auto;
     padding: 20px;
@@ -32,7 +37,6 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
-    height: 50px;
 }
     .dropdown-wrapper > select {
         width: 150px;
@@ -56,5 +60,6 @@ body {
 
 #output-field {
     width: 100%;
+    margin-top: 10px;
     height: 200px;
 }
