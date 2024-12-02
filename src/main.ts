@@ -1,4 +1,5 @@
 import { executeDay1Challenge } from "./days/day1.ts";
+import { executeDay2Challenge } from "./days/day2.ts";
 
 export const executeChallenge = () => {
     const challengeSelected = (<HTMLInputElement>document.getElementById('challenge-select'))?.value ?? '1-1';
@@ -7,10 +8,14 @@ export const executeChallenge = () => {
 
     const challenge = challengeSelected.split('-');
     let outputValue = '';
+    const part = Number(challenge[1]);
 
     switch(challenge[0]) {
         case '1':
-            outputValue = executeDay1Challenge(inputValue, Number(challenge[1]));
+            outputValue = executeDay1Challenge(inputValue, part);
+            break;
+        case '2':
+            outputValue = executeDay2Challenge(inputValue, part);
             break;
         default:
             outputValue = 'Select A Challenge';
@@ -31,6 +36,16 @@ const challenges = [
         id: '1-2',
         url: 'https://adventofcode.com/2024/day/1',
     },
+    {
+        label: 'Day 2, Part 1',
+        id: '2-1',
+        url: 'https://adventofcode.com/2024/day/2'
+    },
+    {
+        label: 'Day 2, Part 2',
+        id: '2-2',
+        url: 'https://adventofcode.com/2024/day/2'
+    }
 ]
 
 const challengeOptions = challenges.map((challenge) => {
